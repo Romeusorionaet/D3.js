@@ -1,53 +1,45 @@
-import { arc } from "d3";
-
+import { SmilingFace } from "./components/smiling-face";
+import { range } from "d3";
 function App() {
-  const width = 960;
-  const height = 500;
+  const width = 480;
+  const height = 250;
   const centerX = width / 2;
   const centerY = height / 2;
-  const strokeWidth = 20;
-  const eyeOffsetX = 90;
-  const eyeOffsetY = 100;
-  const eyeBallOffsetX = 90;
-  const eyeBallOffsetY = 90;
-  const eyeRadius = 50;
-  const mouthWidth = 140;
-  const mouthRadius = 80;
-
-  const mouthArc = arc()
-    .innerRadius(mouthWidth)
-    .outerRadius(mouthRadius + mouthRadius)
-    .startAngle(Math.PI / 2)
-    .endAngle((Math.PI * 3) / 2);
+  const strokeWidth = 10;
+  const eyeOffsetX = 45;
+  const eyeOffsetY = 50;
+  const eyeBallOffsetX = 45;
+  const eyeBallOffsetY = 45;
+  const eyeRadius = 25;
+  const mouthWidth = 70;
+  const mouthRadius = 40;
+  const randomValue = Math.random() * 10;
 
   return (
-    <svg width={width} height={height}>
-      <g transform={`translate(${centerX},${centerY})`}>
-        <title>face</title>
-        <circle
-          r={centerY - strokeWidth / 2}
-          fill="yellow"
-          stroke="black"
-          strokeWidth={strokeWidth}
-        />
-        <circle cx={-eyeOffsetX} cy={-eyeOffsetY} r={eyeRadius} />
-        <circle cx={eyeOffsetX} cy={-eyeOffsetY} r={eyeRadius} />
-        <circle
-          cx={-eyeBallOffsetX}
-          cy={-eyeOffsetY}
-          r={eyeRadius / 2}
-          fill="white"
-        />
-        <circle
-          cx={eyeBallOffsetY}
-          cy={-eyeOffsetY}
-          r={eyeRadius / 2}
-          fill="white"
-        />
+    <main>
+      <h1>Data Visualization with D3.js, Javascript, React - Full Course</h1>
 
-        <path d={mouthArc()} />
-      </g>
-    </svg>
+      <h2>First step to understand the basics.</h2>
+      <p>A smiling face SVG was created.</p>
+
+      {range(2).map((_, index) => (
+        <SmilingFace
+          key={index}
+          width={width}
+          height={height}
+          centerX={centerX}
+          centerY={centerY}
+          strokeWidth={strokeWidth}
+          eyeOffsetX={eyeOffsetX + randomValue}
+          eyeOffsetY={eyeOffsetY + randomValue}
+          eyeBallOffsetX={eyeBallOffsetX}
+          eyeBallOffsetY={eyeBallOffsetY}
+          eyeRadius={eyeRadius + randomValue}
+          mouthWidth={mouthWidth + randomValue}
+          mouthRadius={mouthRadius}
+        />
+      ))}
+    </main>
   );
 }
 
