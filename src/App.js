@@ -36,10 +36,10 @@ export default function App() {
 
       <CircleMoving />
 
-      <h2>3. Loading and Parsing CSV Data.</h2>
+      <h2>3. Rendering Data with React.</h2>
       <p>
-        A program that loads in some data using 03 utilities, and uses React
-        state to keep track of the data.
+        A program that loads in some data about CSS named colors and uses React
+        to render the data.
       </p>
 
       <LoadingData />
