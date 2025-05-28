@@ -3,6 +3,7 @@ import { LoadingData } from "./components/csv-data/loading-data";
 import { CircleMoving } from "./components/circle-moving";
 import { SmilingFace } from "./components/smiling-face";
 import { range } from "d3";
+import { DataWithD3 } from "./components/csv-data/data-with-d3";
 
 export default function App() {
   return (
@@ -43,6 +44,11 @@ export default function App() {
       </p>
 
       <LoadingData />
+
+      <div style={{ marginTop: "50px" }} />
+
+      <h2>3. Rendering Data with React + D3.</h2>
+      <DataWithD3 />
     </main>
   );
 }
