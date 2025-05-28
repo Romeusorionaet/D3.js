@@ -9,7 +9,7 @@ const centerY = 250;
 
 const pieArc = arc().innerRadius(0).outerRadius(width);
 
-export function DataWithD3() {
+export function DataCssColorsWithD3() {
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -30,8 +30,8 @@ export function DataWithD3() {
     <svg width={width} height={height}>
       <title>CSS colors</title>
       <g transform={`translate(${centerX},${centerY})`}>
-        {colorPie.map((d) => (
-          <path key={d} fill={d.data["black"]} d={pieArc(d)} />
+        {colorPie.map((d, i) => (
+          <path key={i} fill={d.data["black"]} d={pieArc(d)} />
         ))}
       </g>
     </svg>

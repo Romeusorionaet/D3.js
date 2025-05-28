@@ -27,8 +27,9 @@ export function LoadingData() {
         overflow: "auto",
       }}
     >
-      {data.map((d) => (
+      {data.map((d, i) => (
         <div
+          key={i}
           style={{
             backgroundColor: d["black"],
             width: "150px",
