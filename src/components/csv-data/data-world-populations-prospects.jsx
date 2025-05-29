@@ -1,7 +1,8 @@
 import { useDataPopulationsProspects } from "../../hooks/use-data-populations-prospects";
-import { scaleLinear, max, format } from "d3";
+import { xAxisTickFormat } from "../../utilities/xAxis-tick-format";
 import { AxisBottom } from "./axis-bottom";
 import { AxisLeft } from "./axis-left";
+import { scaleLinear, max } from "d3";
 import { Marks } from "./marks";
 import { scaleBand } from "d3";
 
@@ -16,8 +17,6 @@ export function DatWorldPopulationsProspects() {
   if (!data) {
     return <pre>"loading..."</pre>;
   }
-
-  const xAxisTickFormat = (n) => format(".2s")(n).replace("G", "B");
 
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
@@ -50,7 +49,7 @@ export function DatWorldPopulationsProspects() {
           textAnchor="middle"
           className="axis-label"
         >
-          Population
+          Population prospects (2050)
         </text>
         <Marks
           yScale={yScale}

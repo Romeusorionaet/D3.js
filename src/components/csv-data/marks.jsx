@@ -1,3 +1,5 @@
+import { xAxisTickFormat } from "../../utilities/xAxis-tick-format";
+
 export function Marks({ yScale, xScale, data, xValue, yValue }) {
   return (
     <>
@@ -9,7 +11,9 @@ export function Marks({ yScale, xScale, data, xValue, yValue }) {
           width={xScale(xValue(d))}
           height={yScale.bandwidth()}
           className="mark"
-        />
+        >
+          <title>{xAxisTickFormat(xValue(d))}</title>
+        </rect>
       ))}
     </>
   );
