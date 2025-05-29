@@ -1,5 +1,5 @@
-import { useDataPopulationsProspects } from "../../hooks/use-data-populations-prospects";
-import { xAxisTickFormat } from "../../utilities/xAxis-tick-format";
+import { useDataPopulationsProspects } from "../../../hooks/use-data-populations-prospects";
+import { xAxisTickFormat } from "../../../utilities/xAxis-tick-format";
 import { AxisBottom } from "./axis-bottom";
 import { AxisLeft } from "./axis-left";
 import { scaleLinear, max } from "d3";
@@ -11,7 +11,7 @@ const height = 600;
 const margin = { top: 20, right: 30, bottom: 50, left: 300 };
 const xAxisLabelOffset = 45;
 
-export function DatWorldPopulationsProspects() {
+export function DataWorldPopulationsProspects() {
   const { data } = useDataPopulationsProspects();
 
   if (!data) {

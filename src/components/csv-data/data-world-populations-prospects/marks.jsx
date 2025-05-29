@@ -1,4 +1,4 @@
-import { xAxisTickFormat } from "../../utilities/xAxis-tick-format";
+import { xAxisTickFormat } from "../../../utilities/xAxis-tick-format";
 
 export function Marks({ yScale, xScale, data, xValue, yValue }) {
   return (

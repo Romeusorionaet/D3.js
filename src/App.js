@@ -1,7 +1,7 @@
-import { DatWorldPopulationsProspects } from "./components/csv-data/data-world-populations-prospects";
-import { DataCssColorsWithD3 } from "./components/csv-data/data-css-colors-with-d3";
+import { DataWorldPopulationsProspects } from "./components/csv-data/data-world-populations-prospects";
+import { DataCssColors } from "./components/csv-data/data-css-colors";
 import { SmilingFaceValues } from "./constants/smiling-face-values";
-import { LoadingData } from "./components/csv-data/loading-data";
+import { DataCssColorsWithD3 } from "./components/csv-data/data-css-colors-with-d3";
 import { CircleMoving } from "./components/circle-moving";
 import { SmilingFace } from "./components/smiling-face";
 import { range } from "d3";
@@ -44,7 +44,7 @@ export default function App() {
         to render the data.
       </p>
 
-      <LoadingData />
+      <DataCssColors />
 
       <div style={{ marginTop: "50px" }} />
 
@@ -53,7 +53,9 @@ export default function App() {
 
       <h2>Making a Bar Chart with React & D3</h2>
       <p>A program that show the United world populations prospects 2050</p>
-      <DatWorldPopulationsProspects />
+      <DataWorldPopulationsProspects />
+
+      <h2>Iris</h2>
     </main>
   );
 }

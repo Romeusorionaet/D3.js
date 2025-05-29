@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 import { useState, useEffect } from "react";
 
-export function LoadingData() {
+export function DataCssColors() {
   const [data, setData] = useState();
 
   useEffect(() => {
