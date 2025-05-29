@@ -5,6 +5,7 @@ import { DataCssColorsWithD3 } from "./components/csv-data/data-css-colors-with-
 import { CircleMoving } from "./components/circle-moving";
 import { SmilingFace } from "./components/smiling-face";
 import { range } from "d3";
+import { DataIris } from "./components/csv-data/data-iris";
 
 export default function App() {
   return (
@@ -56,6 +57,7 @@ export default function App() {
       <DataWorldPopulationsProspects />
 
       <h2>Iris</h2>
+      <DataIris />
     </main>
   );
 }
