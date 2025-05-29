@@ -1,13 +1,14 @@
 import { useDataPopulationsProspects } from "../../hooks/use-data-populations-prospects";
+import { scaleLinear, max, format } from "d3";
 import { AxisBottom } from "./axis-bottom";
 import { AxisLeft } from "./axis-left";
-import { scaleLinear, max } from "d3";
 import { Marks } from "./marks";
 import { scaleBand } from "d3";
 
 const width = 960;
-const height = 500;
-const margin = { top: 20, right: 20, bottom: 20, left: 200 };
+const height = 600;
+const margin = { top: 20, right: 30, bottom: 50, left: 300 };
+const xAxisLabelOffset = 45;
 
 export function DatWorldPopulationsProspects() {
   const { data } = useDataPopulationsProspects();
@@ -16,13 +17,18 @@ export function DatWorldPopulationsProspects() {
     return <pre>"loading..."</pre>;
   }
 
+  const xAxisTickFormat = (n) => format(".2s")(n).replace("G", "B");
+
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
 
   const yValue = (d) => d.Country;
   const xValue = (d) => d.Population;
 
-  const yScale = scaleBand().domain(data.map(yValue)).range([0, innerHeight]);
+  const yScale = scaleBand()
+    .domain(data.map(yValue))
+    .range([0, innerHeight])
+    .padding(0.1);
 
   const xScale = scaleLinear()
     .domain([0, max(data, xValue)])
@@ -32,8 +38,20 @@ export function DatWorldPopulationsProspects() {
     <svg width={width} height={height}>
       <title>World populations prospects</title>
       <g transform={`translate(${margin.left},${margin.top})`}>
-        <AxisBottom innerHeight={innerHeight} xScale={xScale} />
+        <AxisBottom
+          innerHeight={innerHeight}
+          xScale={xScale}
+          tickFormat={xAxisTickFormat}
+        />
         <AxisLeft yScale={yScale} />
+        <text
+          x={innerWidth / 2}
+          y={innerHeight + xAxisLabelOffset}
+          textAnchor="middle"
+          className="axis-label"
+        >
+          Population
+        </text>
         <Marks
           yScale={yScale}
           xScale={xScale}

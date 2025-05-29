@@ -1,6 +1,6 @@
-import * as d3 from "d3";
-import { arc, pie } from "d3";
 import { useState, useEffect } from "react";
+import { arc, pie } from "d3";
+import * as d3 from "d3";
 
 const width = 960;
 const height = 500;
