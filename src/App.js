@@ -7,6 +7,7 @@ import { SmilingFace } from "./components/smiling-face";
 import { range } from "d3";
 import { DataIris } from "./components/csv-data/data-iris";
 import { DataWeekTemperature } from "./components/csv-data/data-week-temperature";
+import { DataWorldMap } from "./components/csv-data/data-world-map";
 
 export default function App() {
   return (
@@ -62,6 +63,9 @@ export default function App() {
 
       <h2>Making a line Chart of Week Temperature</h2>
       <DataWeekTemperature />
+
+      <h2>World Map</h2>
+      <DataWorldMap />
     </main>
   );
 }

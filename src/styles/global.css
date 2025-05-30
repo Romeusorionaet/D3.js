@@ -26,7 +26,25 @@ body {
     stroke-linecap: round;
 }
 
+.mark-map .land {
+    fill: #00740a;
+}
+
+.mark-map .interiors {
+    fill: none;
+    stroke: #e2e2e2;
+}
+
+.mark-map .graticules {
+    fill: none;
+    stroke: #b6b6b6;
+}
+
+.mark-map .sphere {
+    fill: #e0e0e0;
+}
+
 .axis-label {
     font-size: 1.6em;
-     fill: #635F5D;
+    fill: #635F5D;
 }
