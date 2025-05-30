@@ -6,6 +6,7 @@ import { CircleMoving } from "./components/circle-moving";
 import { SmilingFace } from "./components/smiling-face";
 import { range } from "d3";
 import { DataIris } from "./components/csv-data/data-iris";
+import { DataWeekTemperature } from "./components/csv-data/data-week-temperature";
 
 export default function App() {
   return (
@@ -58,6 +59,9 @@ export default function App() {
 
       <h2>Iris</h2>
       <DataIris />
+
+      <h2>Stylized Line Chart</h2>
+      <DataWeekTemperature />
     </main>
   );
 }

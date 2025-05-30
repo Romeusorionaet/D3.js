@@ -11,7 +11,7 @@ export function AxisLeftCircle({ yScale, innerWidth, tickOffset = -3 }) {
           <text
             y={yScale(tickValue)}
             x={tickOffset}
-            dy=".32em"
+            dy="-2em"
             style={{ textAnchor: "end", fontSize: "12px" }}
           >
             {tickValue}

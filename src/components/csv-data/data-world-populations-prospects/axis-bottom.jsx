@@ -4,6 +4,7 @@ export function AxisBottom({
   tickFormat,
   tickOffset = 3,
 }) {
+  console.log(xScale.ticks());
   return (
     <>
       {xScale.ticks().map((tickValue) => (

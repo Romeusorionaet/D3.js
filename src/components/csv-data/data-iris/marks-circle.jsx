@@ -9,7 +9,7 @@ export function MarksCircle({ yScale, xScale, data, xValue, yValue }) {
             key={i}
             cx={xScale(xValue(d))}
             cy={yScale(yValue(d))}
-            r={10}
+            r={7}
             className="mark"
           >
             <title>{xAxisTickFormat(xValue(d))}</title>
