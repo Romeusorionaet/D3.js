@@ -60,7 +60,7 @@ export default function App() {
       <h2>Iris</h2>
       <DataIris />
 
-      <h2>Stylized Line Chart</h2>
+      <h2>Making a line Chart of Week Temperature</h2>
       <DataWeekTemperature />
     </main>
   );

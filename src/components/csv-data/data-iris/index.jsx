@@ -35,7 +35,7 @@ export function DataIris() {
 
   return (
     <svg width={width} height={height}>
-      <title>World populations prospects</title>
+      <title>Data Iris</title>
       <g transform={`translate(${margin.left},${margin.top})`}>
         <AxisBottom
           innerHeight={innerHeight}

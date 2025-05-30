@@ -1,4 +1,4 @@
-export function AxisBottom({
+export function AxisBottomLine({
   innerHeight,
   xScale,
   tickFormat,
@@ -9,7 +9,7 @@ export function AxisBottom({
       {xScale.ticks().map((tickValue) => (
         <g
           key={tickValue}
-          transform={`translate(${xScale(tickValue)}, 0)`}
+          transform={`translate(${xScale(tickValue)})`}
           className="tick"
         >
           <line y2={innerHeight} />

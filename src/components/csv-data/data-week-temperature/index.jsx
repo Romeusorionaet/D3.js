@@ -1,9 +1,9 @@
 import { useDataWeekTemperature } from "../../../hooks/use-data-week-temperature";
 import { xAxisTickTimeFormat } from "../../../utilities/xAxis-tick-time-format";
-import { AxisBottom } from "../data-world-populations-prospects/axis-bottom";
-import { AxisLeftCircle } from "../data-iris/axis-left-circle";
-import { MarksCircle } from "../data-iris/marks-circle";
+import { AxisBottomLine } from "./axis-bottom-line";
 import { scaleLinear, extent, scaleTime } from "d3";
+import { AxisLeftLine } from "./axis-left-line";
+import { MarksLine } from "./marks-line";
 
 const width = 960;
 const height = 500;
@@ -29,18 +29,19 @@ export function DataWeekTemperature() {
 
   const xScale = scaleTime()
     .domain(extent(data, xValue))
-    .range([innerWidth, 0])
+    .range([0, innerWidth])
     .nice();
 
   const yScale = scaleLinear()
     .domain(extent(data, yValue))
-    .range([innerHeight, 0]);
+    .range([innerHeight, 0])
+    .nice();
 
   return (
     <svg width={width} height={height}>
-      <title>World populations prospects</title>
+      <title>Week Temperature</title>
       <g transform={`translate(${margin.left},${margin.top})`}>
-        <AxisBottom
+        <AxisBottomLine
           innerHeight={innerHeight}
           xScale={xScale}
           tickFormat={xAxisTickTimeFormat}
@@ -56,7 +57,7 @@ export function DataWeekTemperature() {
           {yAxisLabel}
         </text>
 
-        <AxisLeftCircle
+        <AxisLeftLine
           yScale={yScale}
           innerWidth={innerWidth}
           tickOffset={-10}
@@ -71,12 +72,14 @@ export function DataWeekTemperature() {
           {xAxisLabel}
         </text>
 
-        <MarksCircle
+        <MarksLine
           xScale={xScale}
           yScale={yScale}
           data={data}
           xValue={xValue}
           yValue={yValue}
+          tooltipFormat={xAxisTickTimeFormat}
+          circleRadius={4}
         />
       </g>
     </svg>
