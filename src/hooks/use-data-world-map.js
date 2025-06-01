@@ -17,7 +17,5 @@ export function useDataWorldMap() {
     );
   }, []);
 
-  console.log(data);
-
   return { data };
 }

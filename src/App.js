@@ -1,13 +1,14 @@
 import { DataWorldPopulationsProspects } from "./components/csv-data/data-world-populations-prospects";
+import { DataCssColorsWithD3 } from "./components/csv-data/data-css-colors-with-d3";
+import { DataWeekTemperature } from "./components/csv-data/data-week-temperature";
+import { DataScatterPlot } from "./components/csv-data/data-scatter-plot";
 import { DataCssColors } from "./components/csv-data/data-css-colors";
 import { SmilingFaceValues } from "./constants/smiling-face-values";
-import { DataCssColorsWithD3 } from "./components/csv-data/data-css-colors-with-d3";
+import { DataWorldMap } from "./components/csv-data/data-world-map";
+import { DataIris } from "./components/csv-data/data-iris";
 import { CircleMoving } from "./components/circle-moving";
 import { SmilingFace } from "./components/smiling-face";
 import { range } from "d3";
-import { DataIris } from "./components/csv-data/data-iris";
-import { DataWeekTemperature } from "./components/csv-data/data-week-temperature";
-import { DataWorldMap } from "./components/csv-data/data-world-map";
 
 export default function App() {
   return (
@@ -66,6 +67,11 @@ export default function App() {
 
       <h2>World Map</h2>
       <DataWorldMap />
+
+      <h2>Scatter Plot with Menus</h2>
+      <p>With React & D3</p>
+
+      <DataScatterPlot />
     </main>
   );
 }

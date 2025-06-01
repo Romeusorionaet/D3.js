@@ -64,7 +64,7 @@ export function DataIris() {
           textAnchor="middle"
           className="axis-label"
         >
-          Sepal Length
+          Petal Length
         </text>
         <MarksCircle
           xScale={xScale}

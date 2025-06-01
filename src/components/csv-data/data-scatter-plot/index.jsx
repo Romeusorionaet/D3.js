@@ -1,0 +1,127 @@
+import { xAxisTickFormat } from "../../../utilities/xAxis-tick-format";
+import { AxisBottomScatterPlot } from "./axis-bottom-scatter-plot";
+import { AxisLeftScatterPlot } from "./axis-left-scatter-plot";
+import { useDataIris } from "../../../hooks/use-data-iris";
+import { MarksScatterPlot } from "./marks-scatter-plot";
+import { DropDown } from "../../drop-down";
+import { scaleLinear, extent } from "d3";
+import { useState } from "react";
+
+const menuHeight = 75;
+const width = 960;
+const height = 500 - menuHeight;
+const margin = { top: 20, right: 30, bottom: 60, left: 100 };
+const xAxisLabelOffset = 45;
+const yAxisLabelOffset = -45;
+
+const attributes = [
+  { value: "sepal_length", label: "Sepal Length" },
+  { value: "sepal_width", label: "Sepal Width" },
+  { value: "petal_length", label: "Petal Length" },
+  { value: "petal_width", label: "Petal Width" },
+  { value: "species", label: "Species" },
+];
+
+const getLabel = (value) => {
+  for (let i = 0; i < attributes.length; i++) {
+    if (attributes[i].value === value) {
+      return attributes[i].label;
+    }
+  }
+};
+
+export function DataScatterPlot() {
+  const { data } = useDataIris();
+
+  const initialXAttribute = "petal_length";
+  const [xAttribute, setXAttribute] = useState(initialXAttribute);
+  const xValue = (d) => d[xAttribute];
+  const xAxisLabel = getLabel(xAttribute);
+
+  const initialYAttribute = "sepal_width";
+  const [yAttribute, setYAttribute] = useState(initialYAttribute);
+  const yValue = (d) => d[yAttribute];
+  const yAxisLabel = getLabel(yAttribute);
+
+  if (!data) {
+    return <pre>"loading..."</pre>;
+  }
+
+  const innerHeight = height - margin.top - margin.bottom;
+  const innerWidth = width - margin.left - margin.right;
+
+  const xScale = scaleLinear()
+    .domain(extent(data, xValue))
+    .range([0, innerWidth])
+    .nice();
+
+  const yScale = scaleLinear()
+    .domain(extent(data, yValue))
+    .range([0, innerHeight]);
+
+  return (
+    <>
+      <label for="x-select">
+        X:
+        <DropDown
+          id="x-select"
+          options={attributes}
+          onSelectedValueChange={setXAttribute}
+          selectedXValue={xAttribute}
+        />
+      </label>
+
+      <label for="y-select">
+        Y:
+        <DropDown
+          id="y-select"
+          options={attributes}
+          onSelectedValueChange={setYAttribute}
+          selectedValue={yAttribute}
+        />
+      </label>
+
+      <svg width={width} height={height}>
+        <title>Data Iris</title>
+        <g transform={`translate(${margin.left},${margin.top})`}>
+          <AxisBottomScatterPlot
+            innerHeight={innerHeight}
+            xScale={xScale}
+            tickFormat={xAxisTickFormat}
+            tickOffset={10}
+          />
+          <text
+            textAnchor="middle"
+            className="axis-label"
+            transform={`translate(${yAxisLabelOffset}, ${
+              innerHeight / 2
+            }) rotate(-90)`}
+          >
+            {yAxisLabel}
+          </text>
+
+          <AxisLeftScatterPlot
+            yScale={yScale}
+            innerWidth={innerWidth}
+            tickOffset={-10}
+          />
+          <text
+            x={innerWidth / 2}
+            y={innerHeight + xAxisLabelOffset}
+            textAnchor="middle"
+            className="axis-label"
+          >
+            {xAxisLabel}
+          </text>
+          <MarksScatterPlot
+            xScale={xScale}
+            yScale={yScale}
+            data={data}
+            xValue={xValue}
+            yValue={yValue}
+          />
+        </g>
+      </svg>
+    </>
+  );
+}
