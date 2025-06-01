@@ -68,7 +68,7 @@ export default function App() {
       <h2>World Map</h2>
       <DataWorldMap />
 
-      <h2>Scatter Plot with Menus</h2>
+      <h2>Scatter Plot with Menus (Data Iris)</h2>
       <p>With React & D3</p>
 
       <DataScatterPlot />

@@ -33,6 +33,7 @@ const getLabel = (value) => {
 
 export function DataScatterPlot() {
   const { data } = useDataIris();
+  const [hoveredValue, setHoveredValue] = useState(null);
 
   const initialXAttribute = "petal_length";
   const [xAttribute, setXAttribute] = useState(initialXAttribute);
@@ -58,6 +59,8 @@ export function DataScatterPlot() {
 
   const colorValue = (d) => d.species;
   const colorLegendLabel = "Species";
+
+  const filteredData = data.filter((d) => hoveredValue === colorValue(d));
 
   const circleRadius = 7;
 
@@ -128,16 +131,32 @@ export function DataScatterPlot() {
             <text y={-40} x={20} textAnchor="middle" className="axis-label">
               {colorLegendLabel}
             </text>
+
             <ColorLegend
               tickSpacing={22}
               tickTextOffset={12}
               tickSize={circleRadius}
               colorScale={colorScale}
+              onHover={setHoveredValue}
+              hoveredValue={hoveredValue}
+            />
+          </g>
+
+          <g opacity={hoveredValue ? 0.2 : 1}>
+            <MarksScatterPlot
+              data={data}
+              xScale={xScale}
+              yScale={yScale}
+              xValue={xValue}
+              yValue={yValue}
+              colorScale={colorScale}
+              colorValue={colorValue}
+              circleRadius={circleRadius}
             />
           </g>
 
           <MarksScatterPlot
-            data={data}
+            data={filteredData}
             xScale={xScale}
             yScale={yScale}
             xValue={xValue}
