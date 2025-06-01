@@ -3,14 +3,15 @@ import { AxisBottomScatterPlot } from "./axis-bottom-scatter-plot";
 import { AxisLeftScatterPlot } from "./axis-left-scatter-plot";
 import { useDataIris } from "../../../hooks/use-data-iris";
 import { MarksScatterPlot } from "./marks-scatter-plot";
+import { scaleLinear, extent, scaleOrdinal } from "d3";
+import { ColorLegend } from "./color-legend";
 import { DropDown } from "../../drop-down";
-import { scaleLinear, extent } from "d3";
 import { useState } from "react";
 
 const menuHeight = 75;
 const width = 960;
 const height = 500 - menuHeight;
-const margin = { top: 20, right: 30, bottom: 60, left: 100 };
+const margin = { top: 20, right: 150, bottom: 60, left: 100 };
 const xAxisLabelOffset = 45;
 const yAxisLabelOffset = -45;
 
@@ -55,9 +56,18 @@ export function DataScatterPlot() {
     .range([0, innerWidth])
     .nice();
 
+  const colorValue = (d) => d.species;
+  const colorLegendLabel = "Species";
+
+  const circleRadius = 7;
+
   const yScale = scaleLinear()
     .domain(extent(data, yValue))
     .range([0, innerHeight]);
+
+  const colorScale = scaleOrdinal()
+    .domain(data.map(colorValue))
+    .range(["#E6842A", "#137B80", "#8E6C8A"]);
 
   return (
     <>
@@ -67,7 +77,7 @@ export function DataScatterPlot() {
           id="x-select"
           options={attributes}
           onSelectedValueChange={setXAttribute}
-          selectedXValue={xAttribute}
+          selectedValue={xAttribute}
         />
       </label>
 
@@ -113,12 +123,28 @@ export function DataScatterPlot() {
           >
             {xAxisLabel}
           </text>
+
+          <g transform={`translate(${innerWidth + 50}, 60)`}>
+            <text y={-40} x={20} textAnchor="middle" className="axis-label">
+              {colorLegendLabel}
+            </text>
+            <ColorLegend
+              tickSpacing={22}
+              tickTextOffset={12}
+              tickSize={circleRadius}
+              colorScale={colorScale}
+            />
+          </g>
+
           <MarksScatterPlot
+            data={data}
             xScale={xScale}
             yScale={yScale}
-            data={data}
             xValue={xValue}
             yValue={yValue}
+            colorScale={colorScale}
+            colorValue={colorValue}
+            circleRadius={circleRadius}
           />
         </g>
       </svg>
