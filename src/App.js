@@ -4,7 +4,7 @@ import { DataWeekTemperature } from "./components/csv-data/data-week-temperature
 import { DataScatterPlot } from "./components/csv-data/data-scatter-plot";
 import { DataCssColors } from "./components/csv-data/data-css-colors";
 import { SmilingFaceValues } from "./constants/smiling-face-values";
-import { DataWorldMap } from "./components/csv-data/data-world-map";
+import { DataWorldAtlas } from "./components/csv-data/data-world-atlas";
 import { DataIris } from "./components/csv-data/data-iris";
 import { CircleMoving } from "./components/circle-moving";
 import { SmilingFace } from "./components/smiling-face";
@@ -66,7 +66,7 @@ export default function App() {
       <DataWeekTemperature />
 
       <h2>World Map</h2>
-      <DataWorldMap />
+      <DataWorldAtlas />
 
       <h2>Scatter Plot with Menus (Data Iris)</h2>
       <p>With React & D3</p>

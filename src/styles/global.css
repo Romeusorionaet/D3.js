@@ -28,21 +28,26 @@ body {
 }
 
 .mark-map .land {
-    fill: #00740a;
+    fill: #d8d8d8;
 }
 
 .mark-map .interiors {
     fill: none;
-    stroke: #e2e2e2;
+    stroke: #c3c3c3;
 }
 
 .mark-map .graticules {
     fill: none;
-    stroke: #b6b6b6;
+    stroke: #dadada;
 }
 
 .mark-map .sphere {
-    fill: #e0e0e0;
+    fill: #ececec;
+}
+
+.mark-map circle {
+    fill: #137B80;
+    opacity: 0.3;
 }
 
 .axis-label {

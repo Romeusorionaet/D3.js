@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { json } from "d3";
 import { feature, mesh } from "topojson-client";
 
-export function useDataWorldMap() {
+export function useDataWorldAtlas() {
   const [data, setData] = useState();
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import { geoNaturalEarth1, geoPath, geoGraticule } from "d3";
 
-export function MarksMap({ data: { land, interiors } }) {
+export function MarksAtlas({ worldAtlas: { land, interiors }, cities }) {
   const projection = geoNaturalEarth1();
   const path = geoPath(projection);
   const graticule = geoGraticule();
@@ -13,6 +13,10 @@ export function MarksMap({ data: { land, interiors } }) {
         return <path key={i} d={path(feature)} className="land" />;
       })}
       <path d={path(interiors)} className="interiors" />;
+      {cities.map((d) => {
+        const [x, y] = projection([d.lng, d.lat]);
+        return <circle cx={x} cy={y} r={1.5} />;
+      })}
     </g>
   );
 }
