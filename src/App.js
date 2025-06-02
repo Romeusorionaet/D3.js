@@ -66,6 +66,7 @@ export default function App() {
       <DataWeekTemperature />
 
       <h2>World Map</h2>
+      <p>shows the most populous cities</p>
       <DataWorldAtlas />
 
       <h2>Scatter Plot with Menus (Data Iris)</h2>
