@@ -14,13 +14,14 @@ export function MarksAtlas({
     <g className="mark-map">
       <path d={path({ type: "Sphere" })} className="sphere" />
       <path d={path(graticule())} className="graticules" />;
-      {land.features.map((feature, i) => {
-        return <path key={i} d={path(feature)} className="land" />;
-      })}
+      {land &&
+        land.features.map((feature, i) => {
+          return <path key={i} d={path(feature)} className="land" />;
+        })}
       <path d={path(interiors)} className="interiors" />;
-      {cities.map((d) => {
+      {cities.map((d, i) => {
         const [x, y] = projection([d.lng, d.lat]);
-        return <circle cx={x} cy={y} r={sizeScale(sizeValue(d))} />;
+        return <circle key={i} cx={x} cy={y} r={sizeScale(sizeValue(d))} />;
       })}
     </g>
   );

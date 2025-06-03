@@ -19,7 +19,6 @@ export default function App() {
 
       <h2>1. Understand the basics.</h2>
       <p>A smiling face SVG was created.</p>
-
       {range(2).map((_, index) => (
         <SmilingFace
           // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
@@ -41,7 +40,6 @@ export default function App() {
 
       <h2>2. Render & Interaction.</h2>
       <p>A program that fallows your mouse with a circle.</p>
-
       <CircleMoving />
 
       <h2>3. Rendering Data with React.</h2>
@@ -49,7 +47,6 @@ export default function App() {
         A program that loads in some data about CSS named colors and uses React
         to render the data.
       </p>
-
       <DataCssColors />
 
       <div style={{ marginTop: "50px" }} />
@@ -73,12 +70,10 @@ export default function App() {
 
       <h2>Scatter Plot with Menus (Data Iris)</h2>
       <p>With React & D3</p>
-
       <DataScatterPlot />
 
       <h2>Analyzing Missing Migrants</h2>
       <p>Loading & Visualizing the Data</p>
-
       <DataMissingMigrants />
 
       <h2>Missing migrants on a Map</h2>

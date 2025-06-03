@@ -74,7 +74,7 @@ export function DataScatterPlot() {
 
   return (
     <>
-      <label for="x-select">
+      <label htmlFor="x-select">
         X:
         <DropDown
           id="x-select"
@@ -84,7 +84,7 @@ export function DataScatterPlot() {
         />
       </label>
 
-      <label for="y-select">
+      <label htmlFor="y-select">
         Y:
         <DropDown
           id="y-select"
