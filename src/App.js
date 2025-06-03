@@ -1,11 +1,12 @@
 import { DataWorldPopulationsProspects } from "./components/csv-data/data-world-populations-prospects";
+import { DataMissingMigrantsOnMap } from "./components/csv-data/data-missing-migrants-on-map";
 import { DataCssColorsWithD3 } from "./components/csv-data/data-css-colors-with-d3";
 import { DataWeekTemperature } from "./components/csv-data/data-week-temperature";
 import { DataMissingMigrants } from "./components/csv-data/data-missing-migrants";
 import { DataScatterPlot } from "./components/csv-data/data-scatter-plot";
+import { DataWorldAtlas } from "./components/csv-data/data-world-atlas";
 import { DataCssColors } from "./components/csv-data/data-css-colors";
 import { SmilingFaceValues } from "./constants/smiling-face-values";
-import { DataWorldAtlas } from "./components/csv-data/data-world-atlas";
 import { DataIris } from "./components/csv-data/data-iris";
 import { CircleMoving } from "./components/circle-moving";
 import { SmilingFace } from "./components/smiling-face";
@@ -79,6 +80,9 @@ export default function App() {
       <p>Loading & Visualizing the Data</p>
 
       <DataMissingMigrants />
+
+      <h2>Missing migrants on a Map</h2>
+      <DataMissingMigrantsOnMap />
     </main>
   );
 }
