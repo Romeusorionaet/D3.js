@@ -10,6 +10,7 @@ body {
 .tick text {
     fill: #635F5D;
     cursor: default;
+    font-size: .95em;
 }
 
 .mark {

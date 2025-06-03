@@ -1,6 +1,7 @@
 import { DataWorldPopulationsProspects } from "./components/csv-data/data-world-populations-prospects";
 import { DataCssColorsWithD3 } from "./components/csv-data/data-css-colors-with-d3";
 import { DataWeekTemperature } from "./components/csv-data/data-week-temperature";
+import { DataMissingMigrants } from "./components/csv-data/data-missing-migrants";
 import { DataScatterPlot } from "./components/csv-data/data-scatter-plot";
 import { DataCssColors } from "./components/csv-data/data-css-colors";
 import { SmilingFaceValues } from "./constants/smiling-face-values";
@@ -73,6 +74,11 @@ export default function App() {
       <p>With React & D3</p>
 
       <DataScatterPlot />
+
+      <h2>Analyzing Missing Migrants</h2>
+      <p>Loading & Visualizing the Data</p>
+
+      <DataMissingMigrants />
     </main>
   );
 }
