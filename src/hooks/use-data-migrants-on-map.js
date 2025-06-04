@@ -8,6 +8,7 @@ const row = (d) => {
     .reverse();
   d["Total Number of Dead and Missing"] =
     +d["Total Number of Dead and Missing"];
+  d["Incident Date"] = new Date(d["Incident Date"]);
 
   return d;
 };
@@ -24,8 +25,6 @@ export function useDataMigrantsOnMap() {
       setData(data);
     });
   }, []);
-
-  console.log(data);
 
   return { data };
 }

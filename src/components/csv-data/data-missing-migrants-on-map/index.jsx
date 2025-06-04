@@ -1,12 +1,17 @@
 import { useDataMigrantsOnMap } from "../../../hooks/use-data-migrants-on-map";
 import { useDataWorldAtlas } from "../../../hooks/use-data-world-atlas";
-import { MarksMigrantsOnMap } from "./marks-migrants-on-map";
-import { max, scaleSqrt } from "d3";
+import { DateHistogram } from "./date-histogram";
+import { BubbleMap } from "./bubble-map";
+import { useState } from "react";
 
 const width = 960;
 const height = 500;
+const dateHistogramSize = 0.35;
+const extraHeightBelowMap = 50;
+const xValue = (d) => d["Incident Date"];
 
 export function DataMissingMigrantsOnMap() {
+  const [brushExtent, setBrushExtent] = useState();
   const { data: worldAtlas } = useDataWorldAtlas();
   const { data } = useDataMigrantsOnMap();
 
@@ -14,22 +19,34 @@ export function DataMissingMigrantsOnMap() {
     return <pre>loading...</pre>;
   }
 
-  const sizeValue = (d) => d["Total Number of Dead and Missing"];
-  const maxRadius = 15;
-
-  const sizeScale = scaleSqrt()
-    .domain([0, max(data, sizeValue)])
-    .range([0, maxRadius]);
+  const filteredData = brushExtent
+    ? data.filter((d) => {
+        const date = xValue(d);
+        return date > brushExtent[0] && date < brushExtent[1];
+      })
+    : data;
 
   return (
-    <svg width={width} height={height}>
+    <svg width={width} height={height + extraHeightBelowMap}>
       <title>Missing migrants on a Map</title>
-      <MarksMigrantsOnMap
-        worldAtlas={worldAtlas}
+      <BubbleMap
         data={data}
-        sizeScale={sizeScale}
-        sizeValue={sizeValue}
+        filteredData={filteredData}
+        worldAtlas={worldAtlas}
       />
+      <g
+        transform={`translate(0, ${
+          height - dateHistogramSize * height + extraHeightBelowMap
+        })`}
+      >
+        <DateHistogram
+          data={data}
+          height={dateHistogramSize * height}
+          width={width}
+          xValue={xValue}
+          setBrushExtent={setBrushExtent}
+        />
+      </g>
     </svg>
   );
 }

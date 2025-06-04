@@ -77,6 +77,10 @@ export default function App() {
       <DataMissingMigrants />
 
       <h2>Missing migrants on a Map</h2>
+      <p>
+        A program to have multiple views of missing migrants on map with
+        brushing
+      </p>
       <DataMissingMigrantsOnMap />
     </main>
   );

@@ -13,6 +13,16 @@ body {
     font-size: .95em;
 }
 
+.tick-histogram line {
+    stroke: #C0C0BB
+}
+
+.tick-histogram text {
+    fill: #635F5D;
+    cursor: default;
+    font-size: .60em;
+}
+
 .mark {
     fill: #137B80
 }
@@ -37,7 +47,7 @@ body {
     stroke: #c3c3c3;
 }
 
-.mark-map .graticules {
+.mark-map .graticules, .tick-histogram line {
     fill: none;
     stroke: #dadada;
 }
@@ -53,5 +63,10 @@ body {
 
 .axis-label {
     font-size: 1.6em;
+    fill: #635F5D;
+}
+
+.axis-label-histogram {
+    font-size: .90em;
     fill: #635F5D;
 }
