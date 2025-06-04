@@ -1,4 +1,4 @@
-import { MarksAtlas } from "../data-world-atlas/marks-atlas";
+import { MarksBubbleMap } from "./marks-bubble-map";
 import { max, scaleSqrt } from "d3";
 import { useMemo } from "react";
 
@@ -15,7 +15,7 @@ export const BubbleMap = ({ data, filteredData, worldAtlas }) => {
   );
 
   return (
-    <MarksAtlas
+    <MarksBubbleMap
       worldAtlas={worldAtlas}
       data={filteredData}
       sizeScale={sizeScale}
