@@ -15,7 +15,16 @@ import { range } from "d3";
 export default function App() {
   return (
     <main>
-      <h1>Data Visualization with D3.js, Javascript, React - Full Course</h1>
+      <h1>
+        Data Visualization with D3.js, Javascript, React -{" "}
+        <a
+          href="https://youtu.be/2LhoCfjm8R4?si=bBhlCdxpNihHy1Up"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Full Course
+        </a>
+      </h1>
 
       <h2>1. Understand the basics.</h2>
       <p>A smiling face SVG was created.</p>
