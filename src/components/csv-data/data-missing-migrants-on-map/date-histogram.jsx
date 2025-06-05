@@ -1,3 +1,4 @@
+import { useMissingMigrantsContext } from "../../../contexts/missing-migrants-context-provider";
 import { xAxisTickTimeFormat } from "../../../utilities/xAxis-tick-time-format";
 import { AxisBottomHistogram } from "./axis-bottom-histogram";
 import { AxisLeftHistogram } from "./axis-left-histogram";
@@ -23,7 +24,9 @@ const xAxisLabel = "Time";
 const yValue = (d) => d["Total Number of Dead and Missing"];
 const yAxisLabel = "Total Number of Dead and Missing";
 
-export function DateHistogram({ data, height, width, setBrushExtent, xValue }) {
+export function DateHistogram({ height, width }) {
+  const { data, setBrushExtent, xValue } = useMissingMigrantsContext();
+
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
 
